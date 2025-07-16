@@ -1,12 +1,20 @@
 const container = document.querySelector("#container");
 
-for(i = 0; i < 256; i++){
+function createGrid(size) {
+  container.innerHTML = '';
+  for (let i = 0; i < size * size; i++) {
     const square = document.createElement("div");
     square.classList.add("square");
+    square.addEventListener("mouseover", () => {
+      square.style.backgroundColor = "black";
+    });
     container.appendChild(square);
-
-    square.addEventListener('mouseover',() => {
-        square.style.backgroundColor = "black";
-    })
+  }
 }
 
+createGrid(16);
+
+const resetBtn = document.getElementById("reset");
+resetBtn.addEventListener("click", () => {
+  createGrid(16);
+});
